@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ebenezer Instant Cash", "Ebenezer Instant Cash\Ebenezer Instant Cash.csproj", "{A5E6B718-B8B7-4101-BD5A-37A16FBF443A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5E6B718-B8B7-4101-BD5A-37A16FBF443A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5E6B718-B8B7-4101-BD5A-37A16FBF443A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5E6B718-B8B7-4101-BD5A-37A16FBF443A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5E6B718-B8B7-4101-BD5A-37A16FBF443A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8FCA91B6-08B7-4C6C-A598-DAB24C3B9158}
+	EndGlobalSection
+EndGlobal
