@@ -12,6 +12,8 @@ namespace Ebenezar
 
         private void Main_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'eICDataSet.Borrower' table. You can move, or remove it, as needed.
+            this.borrowerTableAdapter.Fill(this.eICDataSet.Borrower);
 
         }
 

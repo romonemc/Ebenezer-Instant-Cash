@@ -28,7 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dgvBorrowers = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.borrowerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.eICDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.eICDataSet = new Ebenezar.EICDataSet();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbxLoans = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -37,16 +46,30 @@
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.loanTableAdapter = new Ebenezar.EICDataSetTableAdapters.LoanTableAdapter();
+            this.borrowerTableAdapter = new Ebenezar.EICDataSetTableAdapters.BorrowerTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBorrowers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eICDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eICDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvBorrowers
             // 
+            this.dgvBorrowers.AutoGenerateColumns = false;
             this.dgvBorrowers.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvBorrowers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvBorrowers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvBorrowers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBorrowers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5});
+            this.dgvBorrowers.DataSource = this.borrowerBindingSource;
             this.dgvBorrowers.GridColor = System.Drawing.Color.Gainsboro;
             this.dgvBorrowers.Location = new System.Drawing.Point(0, 104);
             this.dgvBorrowers.Name = "dgvBorrowers";
@@ -55,6 +78,51 @@
             this.dgvBorrowers.Size = new System.Drawing.Size(401, 514);
             this.dgvBorrowers.TabIndex = 0;
             this.dgvBorrowers.SelectionChanged += new System.EventHandler(this.dgvBorrowers_SelectionChanged);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "TRN";
+            this.dataGridViewTextBoxColumn1.HeaderText = "TRN";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Name";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Address";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Address";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Telephone";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Telephone";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "DOB";
+            this.dataGridViewTextBoxColumn5.HeaderText = "DOB";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // borrowerBindingSource
+            // 
+            this.borrowerBindingSource.DataMember = "Borrower";
+            this.borrowerBindingSource.DataSource = this.eICDataSetBindingSource;
+            // 
+            // eICDataSetBindingSource
+            // 
+            this.eICDataSetBindingSource.DataSource = this.eICDataSet;
+            this.eICDataSetBindingSource.Position = 0;
+            // 
+            // eICDataSet
+            // 
+            this.eICDataSet.DataSetName = "EICDataSet";
+            this.eICDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // pictureBox1
             // 
@@ -130,6 +198,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Active Loan";
             // 
+            // loanTableAdapter
+            // 
+            this.loanTableAdapter.ClearBeforeFill = true;
+            // 
+            // borrowerTableAdapter
+            // 
+            this.borrowerTableAdapter.ClearBeforeFill = true;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -149,6 +225,9 @@
             this.Text = "Main";
             this.Load += new System.EventHandler(this.Main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBorrowers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eICDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eICDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
@@ -172,5 +251,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn telephoneDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dOBDataGridViewTextBoxColumn;
+        private EICDataSetTableAdapters.LoanTableAdapter loanTableAdapter;
+        private System.Windows.Forms.BindingSource eICDataSetBindingSource;
+        private EICDataSet eICDataSet;
+        private System.Windows.Forms.BindingSource borrowerBindingSource;
+        private EICDataSetTableAdapters.BorrowerTableAdapter borrowerTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
     }
 }
