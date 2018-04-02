@@ -42,7 +42,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -55,7 +54,6 @@
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape12 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape11 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape10 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape9 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape8 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape7 = new Microsoft.VisualBasic.PowerPacks.LineShape();
@@ -65,6 +63,8 @@
             this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape2 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -79,7 +79,6 @@
             this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.splitter1);
             this.panel1.Controls.Add(this.label13);
-            this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label9);
@@ -94,15 +93,17 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(824, 691);
+            this.panel1.Size = new System.Drawing.Size(824, 631);
             this.panel1.TabIndex = 0;
             // 
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.label17);
+            this.panel3.Controls.Add(this.label12);
             this.panel3.Controls.Add(this.label14);
             this.panel3.Controls.Add(this.label15);
-            this.panel3.Location = new System.Drawing.Point(0, 531);
+            this.panel3.Location = new System.Drawing.Point(3, 479);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(824, 283);
             this.panel3.TabIndex = 6;
@@ -127,7 +128,7 @@
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.btnPrint);
@@ -152,6 +153,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Image = global::Ebenezar.Properties.Resources.EIC_Logo1;
             this.pictureBox1.Location = new System.Drawing.Point(25, 3);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
@@ -167,9 +169,9 @@
             this.label1.Location = new System.Drawing.Point(135, 15);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(242, 30);
+            this.label1.Size = new System.Drawing.Size(388, 30);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Ebenezar Instant Cash";
+            this.label1.Text = "Ebenezar Instant Cash Loan Services";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
@@ -211,27 +213,18 @@
             // 
             this.splitter1.Location = new System.Drawing.Point(0, 0);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 691);
+            this.splitter1.Size = new System.Drawing.Size(3, 631);
             this.splitter1.TabIndex = 4;
             this.splitter1.TabStop = false;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(459, 470);
+            this.label13.Location = new System.Drawing.Point(459, 431);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(154, 25);
             this.label13.TabIndex = 3;
             this.label13.Text = "Total Repayment:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(492, 428);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(121, 25);
-            this.label12.TabIndex = 3;
-            this.label12.Text = "Interest Rate:";
             // 
             // label11
             // 
@@ -322,7 +315,6 @@
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape12,
             this.lineShape11,
-            this.lineShape10,
             this.lineShape9,
             this.lineShape8,
             this.lineShape7,
@@ -332,7 +324,7 @@
             this.lineShape3,
             this.lineShape2,
             this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(824, 691);
+            this.shapeContainer1.Size = new System.Drawing.Size(824, 631);
             this.shapeContainer1.TabIndex = 7;
             this.shapeContainer1.TabStop = false;
             // 
@@ -341,8 +333,8 @@
             this.lineShape12.Name = "lineShape12";
             this.lineShape12.X1 = 538;
             this.lineShape12.X2 = 796;
-            this.lineShape12.Y1 = 492;
-            this.lineShape12.Y2 = 492;
+            this.lineShape12.Y1 = 452;
+            this.lineShape12.Y2 = 452;
             // 
             // lineShape11
             // 
@@ -351,14 +343,6 @@
             this.lineShape11.X2 = 796;
             this.lineShape11.Y1 = 531;
             this.lineShape11.Y2 = 531;
-            // 
-            // lineShape10
-            // 
-            this.lineShape10.Name = "lineShape10";
-            this.lineShape10.X1 = 537;
-            this.lineShape10.X2 = 795;
-            this.lineShape10.Y1 = 451;
-            this.lineShape10.Y2 = 451;
             // 
             // lineShape9
             // 
@@ -432,18 +416,36 @@
             this.lineShape1.Y1 = 244;
             this.lineShape1.Y2 = 244;
             // 
-            // Main
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(439, 24);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(55, 25);
+            this.label12.TabIndex = 3;
+            this.label12.Text = "Date:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(439, 87);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(55, 25);
+            this.label17.TabIndex = 3;
+            this.label17.Text = "Date:";
+            // 
+            // ReportForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(824, 691);
+            this.ClientSize = new System.Drawing.Size(824, 631);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Main";
+            this.Name = "ReportForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ebenezer Instant Cash";
@@ -472,7 +474,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
@@ -490,12 +491,13 @@
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape1;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape12;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape11;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape10;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape9;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape8;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape7;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape6;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape5;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label12;
     }
 }
 
