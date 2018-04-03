@@ -31,7 +31,7 @@ namespace Ebenezar
             try
             {
                 TRN = Convert.ToInt32(dgvBorrowers[0, e.RowIndex].Value);
-                dgvLoans.DataSource = loanTableAdapter.GetLoanInfo(TRN);
+                loanTableAdapter.FillWithLoanInfo(eICDataSet.Loan, TRN);
             }
             catch (Exception)
             {
@@ -63,9 +63,19 @@ namespace Ebenezar
 
         private void dgvLoans_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
+            if (dgvBorrowers["BorrowerDOB", dgvBorrowers.SelectedRows[0].Index].Value != DBNull.Value)
+            {
+                String dob = Convert.ToDateTime(dgvBorrowers["BorrowerDOB", dgvBorrowers.SelectedRows[0].Index].Value).ToShortDateString();
+                e.Row.Cells["LoanID"].Value = TRN.ToString().Substring(0, 3) + dob.Substring(dob.Length - 2);
+            }
+            else
+            {
+                MessageBox.Show("Customer Date of Birth must be entered into the system to produce Loan ID.", "Loan ID Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
             e.Row.Cells["borrowerTRN"].Value = TRN;
             e.Row.Cells["disburseDate"].Value = DateTime.Today;
-            //e.Row.Cells["LoanID"].Value = 
         }
 
         private DataRow LastLoanRow;
@@ -82,7 +92,7 @@ namespace Ebenezar
 
             if (LastLoanRow != null)
             {
-                if (LastLoanRow.RowState == DataRowState.Added || LastLoanRow.RowState == DataRowState.Deleted || LastLoanRow.RowState == DataRowState.Modified)
+                if (LastLoanRow.RowState != DataRowState.Unchanged)
                 {
                     loanTableAdapter.Update(LastLoanRow);
                 }
@@ -97,13 +107,19 @@ namespace Ebenezar
 
             if (int.TryParse(txtFilterCustomers.Text, out int query))
             {
-                borrowerBindingSource.Filter;
+                borrowerBindingSource.Filter = "TRN = " + query;
             }
             else
             {
                 string q = "'%" + txtFilterCustomers.Text + "%'";
                 borrowerBindingSource.Filter = "[Name] like " + q;
             }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            ReportForm rf = new ReportForm(Convert.ToInt32(dgvBorrowers.SelectedRows[0].Cells[0].Value), Convert.ToInt32(dgvLoans.SelectedRows[0].Cells[0].Value));
+            rf.ShowDialog();
         }
     }
 }

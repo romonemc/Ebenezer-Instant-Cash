@@ -1964,11 +1964,17 @@ namespace Ebenezar.EICDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT TRN, Name, Address, Telephone, DOB FROM dbo.Borrower";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT        TRN, Name, Address, Telephone, DOB\r\nFROM            Borrower\r\nWHERE" +
+                "        (TRN = @TRN)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TRN", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "TRN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1993,6 +1999,20 @@ namespace Ebenezar.EICDataSetTableAdapters {
             EICDataSet.BorrowerDataTable dataTable = new EICDataSet.BorrowerDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByTRN(EICDataSet.BorrowerDataTable dataTable, int TRN) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(TRN));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2282,58 +2302,45 @@ namespace Ebenezar.EICDataSetTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Loan] WHERE (([Loan ID] = @Original_Loan_ID) AND ([Loan Type] = @Original_Loan_Type) AND ([Repayment Method] = @Original_Repayment_Method) AND ([Disbursement Date] = @Original_Disbursement_Date) AND ([Repayment Frequency] = @Original_Repayment_Frequency) AND ([Credit Officer] = @Original_Credit_Officer) AND ([Borrowed] = @Original_Borrowed) AND ([Maturity Date] = @Original_Maturity_Date) AND ([Borrower TRN] = @Original_Borrower_TRN) AND ([Status] = @Original_Status))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM Loan\r\nWHERE        ([Loan ID] = @Original_Loan_ID)";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Loan_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Loan ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Loan_Type", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Loan Type", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Repayment_Method", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Repayment Method", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Disbursement_Date", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Disbursement Date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Repayment_Frequency", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Repayment Frequency", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Credit_Officer", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Credit Officer", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Borrowed", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Borrowed", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Maturity_Date", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Maturity Date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Borrower_TRN", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Borrower TRN", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Status", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Status", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Loan_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Loan ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Loan] ([Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayment Frequency], [Credit Officer], [Borrowed], [Maturity Date], [Borrower TRN], [Status]) VALUES (@Loan_ID, @Loan_Type, @Repayment_Method, @Disbursement_Date, @Repayment_Frequency, @Credit_Officer, @Borrowed, @Maturity_Date, @Borrower_TRN, @Status);
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO Loan
+                         ([Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayment Frequency], [Credit Officer], Borrowed, [Maturity Date], [Borrower TRN], Status)
+VALUES        (@Loan_ID,@Loan_Type,@Repayment_Method,@Disbursement_Date,@Repayment_Frequency,@Credit_Officer,@Borrowed,@Maturity_Date,@Borrower_TRN,@Status); 
 SELECT [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayment Frequency], [Credit Officer], Borrowed, [Maturity Date], [Borrower TRN], Status FROM Loan WHERE ([Loan ID] = @Loan_ID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Loan_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Loan ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Loan_Type", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Loan Type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Repayment_Method", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Repayment Method", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Disbursement_Date", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Disbursement Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Repayment_Frequency", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Repayment Frequency", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Credit_Officer", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Credit Officer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Borrowed", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Borrowed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Maturity_Date", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Maturity Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Borrower_TRN", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Borrower TRN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Status", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Status", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Loan_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Loan ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Loan_Type", global::System.Data.SqlDbType.VarChar, 150, global::System.Data.ParameterDirection.Input, 0, 0, "Loan Type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Repayment_Method", global::System.Data.SqlDbType.VarChar, 300, global::System.Data.ParameterDirection.Input, 0, 0, "Repayment Method", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Disbursement_Date", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Disbursement Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Repayment_Frequency", global::System.Data.SqlDbType.VarChar, 300, global::System.Data.ParameterDirection.Input, 0, 0, "Repayment Frequency", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Credit_Officer", global::System.Data.SqlDbType.VarChar, 150, global::System.Data.ParameterDirection.Input, 0, 0, "Credit Officer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Borrowed", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Borrowed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Maturity_Date", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Maturity Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Borrower_TRN", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Borrower TRN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Status", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Status", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Loan] SET [Loan ID] = @Loan_ID, [Loan Type] = @Loan_Type, [Repayment Method] = @Repayment_Method, [Disbursement Date] = @Disbursement_Date, [Repayment Frequency] = @Repayment_Frequency, [Credit Officer] = @Credit_Officer, [Borrowed] = @Borrowed, [Maturity Date] = @Maturity_Date, [Borrower TRN] = @Borrower_TRN, [Status] = @Status WHERE (([Loan ID] = @Original_Loan_ID) AND ([Loan Type] = @Original_Loan_Type) AND ([Repayment Method] = @Original_Repayment_Method) AND ([Disbursement Date] = @Original_Disbursement_Date) AND ([Repayment Frequency] = @Original_Repayment_Frequency) AND ([Credit Officer] = @Original_Credit_Officer) AND ([Borrowed] = @Original_Borrowed) AND ([Maturity Date] = @Original_Maturity_Date) AND ([Borrower TRN] = @Original_Borrower_TRN) AND ([Status] = @Original_Status));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE       Loan
+SET                [Loan ID] = @Loan_ID, [Loan Type] = @Loan_Type, [Repayment Method] = @Repayment_Method, [Disbursement Date] = @Disbursement_Date, [Repayment Frequency] = @Repayment_Frequency, 
+                         [Credit Officer] = @Credit_Officer, Borrowed = @Borrowed, [Maturity Date] = @Maturity_Date, [Borrower TRN] = @Borrower_TRN, Status = @Status
+WHERE        ([Loan ID] = @Original_Loan_ID); 
 SELECT [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayment Frequency], [Credit Officer], Borrowed, [Maturity Date], [Borrower TRN], Status FROM Loan WHERE ([Loan ID] = @Loan_ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Loan_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Loan ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Loan_Type", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Loan Type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Repayment_Method", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Repayment Method", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Disbursement_Date", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Disbursement Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Repayment_Frequency", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Repayment Frequency", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Credit_Officer", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Credit Officer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Borrowed", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Borrowed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Maturity_Date", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Maturity Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Borrower_TRN", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Borrower TRN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Status", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Status", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Loan_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Loan ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Loan_Type", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Loan Type", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Repayment_Method", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Repayment Method", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Disbursement_Date", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Disbursement Date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Repayment_Frequency", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Repayment Frequency", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Credit_Officer", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Credit Officer", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Borrowed", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Borrowed", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Maturity_Date", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Maturity Date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Borrower_TRN", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Borrower TRN", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Status", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Status", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Loan_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Loan ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Loan_Type", global::System.Data.SqlDbType.VarChar, 150, global::System.Data.ParameterDirection.Input, 0, 0, "Loan Type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Repayment_Method", global::System.Data.SqlDbType.VarChar, 300, global::System.Data.ParameterDirection.Input, 0, 0, "Repayment Method", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Disbursement_Date", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Disbursement Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Repayment_Frequency", global::System.Data.SqlDbType.VarChar, 300, global::System.Data.ParameterDirection.Input, 0, 0, "Repayment Frequency", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Credit_Officer", global::System.Data.SqlDbType.VarChar, 150, global::System.Data.ParameterDirection.Input, 0, 0, "Credit Officer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Borrowed", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Borrowed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Maturity_Date", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Maturity Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Borrower_TRN", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Borrower TRN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Status", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Status", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Loan_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Loan ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2346,7 +2353,7 @@ SELECT [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayme
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repaymen" +
@@ -2355,10 +2362,18 @@ SELECT [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayme
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT        [Loan ID]\r\nFROM            Loan\r\nWHERE        ([Borrower TRN] = @TR" +
-                "N)";
+            this._commandCollection[1].CommandText = "SELECT        [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [R" +
+                "epayment Frequency], [Credit Officer], Borrowed, [Maturity Date], [Borrower TRN]" +
+                ", Status\r\nFROM            Loan\r\nWHERE        ([Loan ID] = @LoanID)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TRN", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Borrower TRN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LoanID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Loan ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT        [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [R" +
+                "epayment Frequency], [Credit Officer], Borrowed, [Maturity Date], [Borrower TRN]" +
+                ", Status\r\nFROM            Loan\r\nWHERE        ([Borrower TRN] = @TRN)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TRN", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Borrower TRN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2388,13 +2403,29 @@ SELECT [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayme
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual EICDataSet.LoanDataTable GetLoanInfo(int TRN) {
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByLoanID(EICDataSet.LoanDataTable dataTable, int LoanID) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(LoanID));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillWithLoanInfo(EICDataSet.LoanDataTable dataTable, int TRN) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(TRN));
-            EICDataSet.LoanDataTable dataTable = new EICDataSet.LoanDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2430,42 +2461,8 @@ SELECT [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayme
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Loan_ID, string Original_Loan_Type, string Original_Repayment_Method, System.DateTime Original_Disbursement_Date, string Original_Repayment_Frequency, string Original_Credit_Officer, int Original_Borrowed, System.DateTime Original_Maturity_Date, int Original_Borrower_TRN, string Original_Status) {
+        public virtual int Delete(int Original_Loan_ID) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Loan_ID));
-            if ((Original_Loan_Type == null)) {
-                throw new global::System.ArgumentNullException("Original_Loan_Type");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_Loan_Type));
-            }
-            if ((Original_Repayment_Method == null)) {
-                throw new global::System.ArgumentNullException("Original_Repayment_Method");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_Repayment_Method));
-            }
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((System.DateTime)(Original_Disbursement_Date));
-            if ((Original_Repayment_Frequency == null)) {
-                throw new global::System.ArgumentNullException("Original_Repayment_Frequency");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_Repayment_Frequency));
-            }
-            if ((Original_Credit_Officer == null)) {
-                throw new global::System.ArgumentNullException("Original_Credit_Officer");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_Credit_Officer));
-            }
-            this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_Borrowed));
-            this.Adapter.DeleteCommand.Parameters[7].Value = ((System.DateTime)(Original_Maturity_Date));
-            this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(Original_Borrower_TRN));
-            if ((Original_Status == null)) {
-                throw new global::System.ArgumentNullException("Original_Status");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((string)(Original_Status));
-            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2486,7 +2483,7 @@ SELECT [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayme
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Loan_ID, string Loan_Type, string Repayment_Method, System.DateTime Disbursement_Date, string Repayment_Frequency, string Credit_Officer, int Borrowed, System.DateTime Maturity_Date, int Borrower_TRN, string Status) {
+        public virtual int Insert(int Loan_ID, string Loan_Type, string Repayment_Method, string Disbursement_Date, string Repayment_Frequency, string Credit_Officer, int Borrowed, string Maturity_Date, int Borrower_TRN, string Status) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Loan_ID));
             if ((Loan_Type == null)) {
                 throw new global::System.ArgumentNullException("Loan_Type");
@@ -2500,7 +2497,12 @@ SELECT [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayme
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Repayment_Method));
             }
-            this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(Disbursement_Date));
+            if ((Disbursement_Date == null)) {
+                throw new global::System.ArgumentNullException("Disbursement_Date");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Disbursement_Date));
+            }
             if ((Repayment_Frequency == null)) {
                 throw new global::System.ArgumentNullException("Repayment_Frequency");
             }
@@ -2514,7 +2516,12 @@ SELECT [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayme
                 this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Credit_Officer));
             }
             this.Adapter.InsertCommand.Parameters[6].Value = ((int)(Borrowed));
-            this.Adapter.InsertCommand.Parameters[7].Value = ((System.DateTime)(Maturity_Date));
+            if ((Maturity_Date == null)) {
+                throw new global::System.ArgumentNullException("Maturity_Date");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(Maturity_Date));
+            }
             this.Adapter.InsertCommand.Parameters[8].Value = ((int)(Borrower_TRN));
             if ((Status == null)) {
                 throw new global::System.ArgumentNullException("Status");
@@ -2542,27 +2549,7 @@ SELECT [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayme
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(
-                    int Loan_ID, 
-                    string Loan_Type, 
-                    string Repayment_Method, 
-                    System.DateTime Disbursement_Date, 
-                    string Repayment_Frequency, 
-                    string Credit_Officer, 
-                    int Borrowed, 
-                    System.DateTime Maturity_Date, 
-                    int Borrower_TRN, 
-                    string Status, 
-                    int Original_Loan_ID, 
-                    string Original_Loan_Type, 
-                    string Original_Repayment_Method, 
-                    System.DateTime Original_Disbursement_Date, 
-                    string Original_Repayment_Frequency, 
-                    string Original_Credit_Officer, 
-                    int Original_Borrowed, 
-                    System.DateTime Original_Maturity_Date, 
-                    int Original_Borrower_TRN, 
-                    string Original_Status) {
+        public virtual int Update(int Loan_ID, string Loan_Type, string Repayment_Method, string Disbursement_Date, string Repayment_Frequency, string Credit_Officer, int Borrowed, string Maturity_Date, int Borrower_TRN, string Status, int Original_Loan_ID) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Loan_ID));
             if ((Loan_Type == null)) {
                 throw new global::System.ArgumentNullException("Loan_Type");
@@ -2576,7 +2563,12 @@ SELECT [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayme
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Repayment_Method));
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(Disbursement_Date));
+            if ((Disbursement_Date == null)) {
+                throw new global::System.ArgumentNullException("Disbursement_Date");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Disbursement_Date));
+            }
             if ((Repayment_Frequency == null)) {
                 throw new global::System.ArgumentNullException("Repayment_Frequency");
             }
@@ -2590,7 +2582,12 @@ SELECT [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayme
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Credit_Officer));
             }
             this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Borrowed));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((System.DateTime)(Maturity_Date));
+            if ((Maturity_Date == null)) {
+                throw new global::System.ArgumentNullException("Maturity_Date");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Maturity_Date));
+            }
             this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Borrower_TRN));
             if ((Status == null)) {
                 throw new global::System.ArgumentNullException("Status");
@@ -2599,40 +2596,6 @@ SELECT [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayme
                 this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Status));
             }
             this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_Loan_ID));
-            if ((Original_Loan_Type == null)) {
-                throw new global::System.ArgumentNullException("Original_Loan_Type");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_Loan_Type));
-            }
-            if ((Original_Repayment_Method == null)) {
-                throw new global::System.ArgumentNullException("Original_Repayment_Method");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_Repayment_Method));
-            }
-            this.Adapter.UpdateCommand.Parameters[13].Value = ((System.DateTime)(Original_Disbursement_Date));
-            if ((Original_Repayment_Frequency == null)) {
-                throw new global::System.ArgumentNullException("Original_Repayment_Frequency");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_Repayment_Frequency));
-            }
-            if ((Original_Credit_Officer == null)) {
-                throw new global::System.ArgumentNullException("Original_Credit_Officer");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_Credit_Officer));
-            }
-            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_Borrowed));
-            this.Adapter.UpdateCommand.Parameters[17].Value = ((System.DateTime)(Original_Maturity_Date));
-            this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(Original_Borrower_TRN));
-            if ((Original_Status == null)) {
-                throw new global::System.ArgumentNullException("Original_Status");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_Status));
-            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2653,27 +2616,8 @@ SELECT [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayme
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(
-                    string Loan_Type, 
-                    string Repayment_Method, 
-                    System.DateTime Disbursement_Date, 
-                    string Repayment_Frequency, 
-                    string Credit_Officer, 
-                    int Borrowed, 
-                    System.DateTime Maturity_Date, 
-                    int Borrower_TRN, 
-                    string Status, 
-                    int Original_Loan_ID, 
-                    string Original_Loan_Type, 
-                    string Original_Repayment_Method, 
-                    System.DateTime Original_Disbursement_Date, 
-                    string Original_Repayment_Frequency, 
-                    string Original_Credit_Officer, 
-                    int Original_Borrowed, 
-                    System.DateTime Original_Maturity_Date, 
-                    int Original_Borrower_TRN, 
-                    string Original_Status) {
-            return this.Update(Original_Loan_ID, Loan_Type, Repayment_Method, Disbursement_Date, Repayment_Frequency, Credit_Officer, Borrowed, Maturity_Date, Borrower_TRN, Status, Original_Loan_ID, Original_Loan_Type, Original_Repayment_Method, Original_Disbursement_Date, Original_Repayment_Frequency, Original_Credit_Officer, Original_Borrowed, Original_Maturity_Date, Original_Borrower_TRN, Original_Status);
+        public virtual int Update(string Loan_Type, string Repayment_Method, string Disbursement_Date, string Repayment_Frequency, string Credit_Officer, int Borrowed, string Maturity_Date, int Borrower_TRN, string Status, int Original_Loan_ID) {
+            return this.Update(Original_Loan_ID, Loan_Type, Repayment_Method, Disbursement_Date, Repayment_Frequency, Credit_Officer, Borrowed, Maturity_Date, Borrower_TRN, Status, Original_Loan_ID);
         }
     }
     

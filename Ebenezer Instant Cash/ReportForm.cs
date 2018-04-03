@@ -8,9 +8,14 @@ namespace Ebenezar
     public partial class ReportForm : Form
     {
         private PrintDocument PrintDocument1 = new PrintDocument();
+        private int CustTRN;
+        private int LoanID;
 
-        public ReportForm()
+        public ReportForm(int TRN, int LID)
         {
+            this.CustTRN = TRN;
+            this.LoanID = LID;
+
             InitializeComponent();
             PrintDocument1.PrintPage += new PrintPageEventHandler(PrintDocument1_PrintPage);
         }
@@ -40,6 +45,12 @@ namespace Ebenezar
             memoryGraphics.CopyFromScreen(panelLocation.X, panelLocation.Y, 0, 0, s);
 
             btnPrint.Show();
+        }
+
+        private void ReportForm_Load(object sender, EventArgs e)
+        {
+            this.borrowerTableAdapter.FillByTRN(this.eICDataSet.Borrower, CustTRN);
+            this.loanTableAdapter.FillByLoanID(this.eICDataSet.Loan, LoanID);
         }
     }
 }

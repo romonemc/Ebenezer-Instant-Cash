@@ -29,41 +29,46 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvBorrowers = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.borrowerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.eICDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.eICDataSet = new Ebenezar.EICDataSet();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtFilterCustomers = new System.Windows.Forms.TextBox();
-            this.loanTableAdapter = new Ebenezar.EICDataSetTableAdapters.LoanTableAdapter();
-            this.borrowerTableAdapter = new Ebenezar.EICDataSetTableAdapters.BorrowerTableAdapter();
             this.dgvLoans = new System.Windows.Forms.DataGridView();
             this.loanBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.eICDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.eICDataSet = new Ebenezar.EICDataSet();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BorrowerDOB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.loanTableAdapter = new Ebenezar.EICDataSetTableAdapters.LoanTableAdapter();
+            this.borrowerTableAdapter = new Ebenezar.EICDataSetTableAdapters.BorrowerTableAdapter();
             this.LoanID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.disburseDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.borrowedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maturityDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.loanTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.repaymentMethodDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.repaymentFrequencyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.creditOfficerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LoanStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LoanType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RepaymentMethod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RepaymentFrequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreditOfficer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.borrowerTRN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBorrowers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.eICDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.eICDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLoans)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loanBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eICDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eICDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvBorrowers
@@ -79,7 +84,7 @@
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5});
+            this.BorrowerDOB});
             this.dgvBorrowers.DataSource = this.borrowerBindingSource;
             this.dgvBorrowers.GridColor = System.Drawing.Color.Gainsboro;
             this.dgvBorrowers.Location = new System.Drawing.Point(8, 134);
@@ -91,52 +96,11 @@
             this.dgvBorrowers.TabIndex = 0;
             this.dgvBorrowers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBorrowers_CellClick);
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "TRN";
-            this.dataGridViewTextBoxColumn1.HeaderText = "TRN";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Name";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Address";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Address";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Telephone";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Telephone";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "DOB";
-            this.dataGridViewTextBoxColumn5.HeaderText = "DOB";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
             // borrowerBindingSource
             // 
             this.borrowerBindingSource.DataMember = "Borrower";
             this.borrowerBindingSource.DataSource = this.eICDataSetBindingSource;
             this.borrowerBindingSource.PositionChanged += new System.EventHandler(this.borrowerBindingSource_PositionChanged);
-            // 
-            // eICDataSetBindingSource
-            // 
-            this.eICDataSetBindingSource.DataSource = this.eICDataSet;
-            this.eICDataSetBindingSource.Position = 0;
-            // 
-            // eICDataSet
-            // 
-            this.eICDataSet.DataSetName = "EICDataSet";
-            this.eICDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label1
             // 
@@ -184,14 +148,6 @@
             this.txtFilterCustomers.TabIndex = 7;
             this.txtFilterCustomers.TextChanged += new System.EventHandler(this.txtFilterCustomers_TextChanged);
             // 
-            // loanTableAdapter
-            // 
-            this.loanTableAdapter.ClearBeforeFill = true;
-            // 
-            // borrowerTableAdapter
-            // 
-            this.borrowerTableAdapter.ClearBeforeFill = true;
-            // 
             // dgvLoans
             // 
             this.dgvLoans.AllowUserToResizeRows = false;
@@ -204,11 +160,11 @@
             this.disburseDate,
             this.borrowedDataGridViewTextBoxColumn,
             this.maturityDate,
-            this.statusDataGridViewTextBoxColumn,
-            this.loanTypeDataGridViewTextBoxColumn,
-            this.repaymentMethodDataGridViewTextBoxColumn,
-            this.repaymentFrequencyDataGridViewTextBoxColumn,
-            this.creditOfficerDataGridViewTextBoxColumn,
+            this.LoanStatus,
+            this.LoanType,
+            this.RepaymentMethod,
+            this.RepaymentFrequency,
+            this.CreditOfficer,
             this.borrowerTRN});
             this.dgvLoans.DataSource = this.loanBindingSource;
             this.dgvLoans.GridColor = System.Drawing.Color.Gainsboro;
@@ -228,9 +184,77 @@
             this.loanBindingSource.DataSource = this.eICDataSetBindingSource;
             this.loanBindingSource.PositionChanged += new System.EventHandler(this.loanBindingSource_PositionChanged);
             // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(1006, 104);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(75, 23);
+            this.btnPrint.TabIndex = 9;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // eICDataSetBindingSource
+            // 
+            this.eICDataSetBindingSource.DataSource = this.eICDataSet;
+            this.eICDataSetBindingSource.Position = 0;
+            // 
+            // eICDataSet
+            // 
+            this.eICDataSet.DataSetName = "EICDataSet";
+            this.eICDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "TRN";
+            dataGridViewCellStyle1.Format = "###-###-####";
+            dataGridViewCellStyle1.NullValue = "-";
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewTextBoxColumn1.HeaderText = "TRN";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Name";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Address";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Address";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Telephone";
+            dataGridViewCellStyle2.Format = " ###-####";
+            dataGridViewCellStyle2.NullValue = "-";
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Telephone";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // BorrowerDOB
+            // 
+            this.BorrowerDOB.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.BorrowerDOB.DataPropertyName = "DOB";
+            this.BorrowerDOB.HeaderText = "DOB";
+            this.BorrowerDOB.Name = "BorrowerDOB";
+            // 
+            // loanTableAdapter
+            // 
+            this.loanTableAdapter.ClearBeforeFill = true;
+            // 
+            // borrowerTableAdapter
+            // 
+            this.borrowerTableAdapter.ClearBeforeFill = true;
+            // 
             // LoanID
             // 
             this.LoanID.DataPropertyName = "Loan ID";
+            dataGridViewCellStyle3.Format = "###-##";
+            dataGridViewCellStyle3.NullValue = "-";
+            this.LoanID.DefaultCellStyle = dataGridViewCellStyle3;
             this.LoanID.Frozen = true;
             this.LoanID.HeaderText = "Loan ID";
             this.LoanID.Name = "LoanID";
@@ -245,6 +269,9 @@
             // borrowedDataGridViewTextBoxColumn
             // 
             this.borrowedDataGridViewTextBoxColumn.DataPropertyName = "Borrowed";
+            dataGridViewCellStyle4.Format = "C2";
+            dataGridViewCellStyle4.NullValue = "0";
+            this.borrowedDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.borrowedDataGridViewTextBoxColumn.Frozen = true;
             this.borrowedDataGridViewTextBoxColumn.HeaderText = "Borrowed";
             this.borrowedDataGridViewTextBoxColumn.Name = "borrowedDataGridViewTextBoxColumn";
@@ -255,35 +282,35 @@
             this.maturityDate.HeaderText = "Maturity Date";
             this.maturityDate.Name = "maturityDate";
             // 
-            // statusDataGridViewTextBoxColumn
+            // LoanStatus
             // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.LoanStatus.DataPropertyName = "Status";
+            this.LoanStatus.HeaderText = "Status";
+            this.LoanStatus.Name = "LoanStatus";
             // 
-            // loanTypeDataGridViewTextBoxColumn
+            // LoanType
             // 
-            this.loanTypeDataGridViewTextBoxColumn.DataPropertyName = "Loan Type";
-            this.loanTypeDataGridViewTextBoxColumn.HeaderText = "Loan Type";
-            this.loanTypeDataGridViewTextBoxColumn.Name = "loanTypeDataGridViewTextBoxColumn";
+            this.LoanType.DataPropertyName = "Loan Type";
+            this.LoanType.HeaderText = "Loan Type";
+            this.LoanType.Name = "LoanType";
             // 
-            // repaymentMethodDataGridViewTextBoxColumn
+            // RepaymentMethod
             // 
-            this.repaymentMethodDataGridViewTextBoxColumn.DataPropertyName = "Repayment Method";
-            this.repaymentMethodDataGridViewTextBoxColumn.HeaderText = "Repayment Method";
-            this.repaymentMethodDataGridViewTextBoxColumn.Name = "repaymentMethodDataGridViewTextBoxColumn";
+            this.RepaymentMethod.DataPropertyName = "Repayment Method";
+            this.RepaymentMethod.HeaderText = "Repayment Method";
+            this.RepaymentMethod.Name = "RepaymentMethod";
             // 
-            // repaymentFrequencyDataGridViewTextBoxColumn
+            // RepaymentFrequency
             // 
-            this.repaymentFrequencyDataGridViewTextBoxColumn.DataPropertyName = "Repayment Frequency";
-            this.repaymentFrequencyDataGridViewTextBoxColumn.HeaderText = "Repayment Frequency";
-            this.repaymentFrequencyDataGridViewTextBoxColumn.Name = "repaymentFrequencyDataGridViewTextBoxColumn";
+            this.RepaymentFrequency.DataPropertyName = "Repayment Frequency";
+            this.RepaymentFrequency.HeaderText = "Repayment Frequency";
+            this.RepaymentFrequency.Name = "RepaymentFrequency";
             // 
-            // creditOfficerDataGridViewTextBoxColumn
+            // CreditOfficer
             // 
-            this.creditOfficerDataGridViewTextBoxColumn.DataPropertyName = "Credit Officer";
-            this.creditOfficerDataGridViewTextBoxColumn.HeaderText = "Credit Officer";
-            this.creditOfficerDataGridViewTextBoxColumn.Name = "creditOfficerDataGridViewTextBoxColumn";
+            this.CreditOfficer.DataPropertyName = "Credit Officer";
+            this.CreditOfficer.HeaderText = "Credit Officer";
+            this.CreditOfficer.Name = "CreditOfficer";
             // 
             // borrowerTRN
             // 
@@ -296,6 +323,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1088, 619);
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.dgvLoans);
             this.Controls.Add(this.txtFilterCustomers);
             this.Controls.Add(this.groupBox1);
@@ -310,11 +338,11 @@
             this.Load += new System.EventHandler(this.Main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBorrowers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.eICDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.eICDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLoans)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loanBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eICDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eICDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -344,16 +372,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BorrowerDOB;
+        private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.DataGridViewTextBoxColumn LoanID;
         private System.Windows.Forms.DataGridViewTextBoxColumn disburseDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn borrowedDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn maturityDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn loanTypeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn repaymentMethodDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn repaymentFrequencyDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn creditOfficerDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LoanStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LoanType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RepaymentMethod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RepaymentFrequency;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreditOfficer;
         private System.Windows.Forms.DataGridViewTextBoxColumn borrowerTRN;
     }
 }
