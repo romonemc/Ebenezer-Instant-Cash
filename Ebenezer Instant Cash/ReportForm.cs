@@ -51,6 +51,10 @@ namespace Ebenezar
         {
             this.borrowerTableAdapter.FillByTRN(this.eICDataSet.Borrower, CustTRN);
             this.loanTableAdapter.FillByLoanID(this.eICDataSet.Loan, LoanID);
+
+            Double Interest = Convert.ToInt32(lblInterestRate.Text) / 100.00;
+            Interest = Interest * Convert.ToInt32(lblAmountBorrowed.Text);
+            lblTotalRepayment.Text = (Convert.ToInt32(lblAmountBorrowed.Text) + Interest).ToString();
         }
     }
 }

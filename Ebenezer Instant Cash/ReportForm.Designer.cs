@@ -31,15 +31,16 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportForm));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label21 = new System.Windows.Forms.Label();
+            this.lblAmountBorrowed = new System.Windows.Forms.Label();
+            this.loanBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.eICDataSet = new Ebenezar.EICDataSet();
+            this.label22 = new System.Windows.Forms.Label();
+            this.lblInterestRate = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.lblTotalRepayment = new System.Windows.Forms.Label();
             this.lblMaturityDate = new System.Windows.Forms.Label();
-            this.loanBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.eICDataSet = new Ebenezar.EICDataSet();
             this.lblLoanDate = new System.Windows.Forms.Label();
             this.lblPeriod = new System.Windows.Forms.Label();
-            this.lblAmountBorrowed = new System.Windows.Forms.Label();
             this.lblLoanID = new System.Windows.Forms.Label();
             this.lblAddress = new System.Windows.Forms.Label();
             this.borrowerBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -87,7 +88,6 @@
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.borrowerTableAdapter = new Ebenezar.EICDataSetTableAdapters.BorrowerTableAdapter();
             this.loanTableAdapter = new Ebenezar.EICDataSetTableAdapters.LoanTableAdapter();
-            this.label22 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.loanBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eICDataSet)).BeginInit();
@@ -101,7 +101,7 @@
             // 
             this.panel1.Controls.Add(this.lblAmountBorrowed);
             this.panel1.Controls.Add(this.label22);
-            this.panel1.Controls.Add(this.label21);
+            this.panel1.Controls.Add(this.lblInterestRate);
             this.panel1.Controls.Add(this.label19);
             this.panel1.Controls.Add(this.lblTotalRepayment);
             this.panel1.Controls.Add(this.lblMaturityDate);
@@ -137,15 +137,47 @@
             this.panel1.Size = new System.Drawing.Size(824, 631);
             this.panel1.TabIndex = 0;
             // 
-            // label21
+            // lblAmountBorrowed
             // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.label21.Location = new System.Drawing.Point(611, 405);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(50, 25);
-            this.label21.TabIndex = 8;
-            this.label21.Text = "60%";
+            this.lblAmountBorrowed.AutoSize = true;
+            this.lblAmountBorrowed.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.loanBindingSource, "Borrowed", true));
+            this.lblAmountBorrowed.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.lblAmountBorrowed.Location = new System.Drawing.Point(647, 249);
+            this.lblAmountBorrowed.Name = "lblAmountBorrowed";
+            this.lblAmountBorrowed.Size = new System.Drawing.Size(76, 25);
+            this.lblAmountBorrowed.TabIndex = 8;
+            this.lblAmountBorrowed.Text = "label19";
+            // 
+            // loanBindingSource
+            // 
+            this.loanBindingSource.DataMember = "Loan";
+            this.loanBindingSource.DataSource = this.eICDataSet;
+            // 
+            // eICDataSet
+            // 
+            this.eICDataSet.DataSetName = "EICDataSet";
+            this.eICDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.label22.Location = new System.Drawing.Point(611, 249);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(43, 25);
+            this.label22.TabIndex = 8;
+            this.label22.Text = "$JA";
+            // 
+            // lblInterestRate
+            // 
+            this.lblInterestRate.AutoSize = true;
+            this.lblInterestRate.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.loanBindingSource, "Interest Rate", true));
+            this.lblInterestRate.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.lblInterestRate.Location = new System.Drawing.Point(611, 405);
+            this.lblInterestRate.Name = "lblInterestRate";
+            this.lblInterestRate.Size = new System.Drawing.Size(50, 25);
+            this.lblInterestRate.TabIndex = 8;
+            this.lblInterestRate.Text = "60%";
             // 
             // label19
             // 
@@ -177,16 +209,6 @@
             this.lblMaturityDate.TabIndex = 8;
             this.lblMaturityDate.Text = "label19";
             // 
-            // loanBindingSource
-            // 
-            this.loanBindingSource.DataMember = "Loan";
-            this.loanBindingSource.DataSource = this.eICDataSet;
-            // 
-            // eICDataSet
-            // 
-            this.eICDataSet.DataSetName = "EICDataSet";
-            this.eICDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // lblLoanDate
             // 
             this.lblLoanDate.AutoSize = true;
@@ -208,17 +230,6 @@
             this.lblPeriod.Size = new System.Drawing.Size(76, 25);
             this.lblPeriod.TabIndex = 8;
             this.lblPeriod.Text = "label19";
-            // 
-            // lblAmountBorrowed
-            // 
-            this.lblAmountBorrowed.AutoSize = true;
-            this.lblAmountBorrowed.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.loanBindingSource, "Borrowed", true));
-            this.lblAmountBorrowed.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.lblAmountBorrowed.Location = new System.Drawing.Point(647, 249);
-            this.lblAmountBorrowed.Name = "lblAmountBorrowed";
-            this.lblAmountBorrowed.Size = new System.Drawing.Size(76, 25);
-            this.lblAmountBorrowed.TabIndex = 8;
-            this.lblAmountBorrowed.Text = "label19";
             // 
             // lblLoanID
             // 
@@ -664,16 +675,6 @@
             // 
             this.loanTableAdapter.ClearBeforeFill = true;
             // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.label22.Location = new System.Drawing.Point(611, 249);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(43, 25);
-            this.label22.TabIndex = 8;
-            this.label22.Text = "$JA";
-            // 
             // ReportForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -760,7 +761,7 @@
         private EICDataSetTableAdapters.BorrowerTableAdapter borrowerTableAdapter;
         private System.Windows.Forms.BindingSource loanBindingSource;
         private EICDataSetTableAdapters.LoanTableAdapter loanTableAdapter;
-        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label lblInterestRate;
         private System.Windows.Forms.Label label19;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape13;
         private System.Windows.Forms.Label label22;

@@ -694,6 +694,8 @@ namespace Ebenezar {
             
             private global::System.Data.DataColumn columnStatus;
             
+            private global::System.Data.DataColumn columnInterest_Rate;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public LoanDataTable() {
@@ -809,6 +811,14 @@ namespace Ebenezar {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn Interest_RateColumn {
+                get {
+                    return this.columnInterest_Rate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -844,7 +854,7 @@ namespace Ebenezar {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public LoanRow AddLoanRow(int Loan_ID, string Loan_Type, string Repayment_Method, System.DateTime Disbursement_Date, string Repayment_Frequency, string Credit_Officer, int Borrowed, System.DateTime Maturity_Date, BorrowerRow parentBorrowerRowByFK_Loan_Borrower, string Status) {
+            public LoanRow AddLoanRow(int Loan_ID, string Loan_Type, string Repayment_Method, System.DateTime Disbursement_Date, string Repayment_Frequency, string Credit_Officer, int Borrowed, System.DateTime Maturity_Date, BorrowerRow parentBorrowerRowByFK_Loan_Borrower, string Status, int Interest_Rate) {
                 LoanRow rowLoanRow = ((LoanRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Loan_ID,
@@ -856,7 +866,8 @@ namespace Ebenezar {
                         Borrowed,
                         Maturity_Date,
                         null,
-                        Status};
+                        Status,
+                        Interest_Rate};
                 if ((parentBorrowerRowByFK_Loan_Borrower != null)) {
                     columnValuesArray[8] = parentBorrowerRowByFK_Loan_Borrower[0];
                 }
@@ -899,6 +910,7 @@ namespace Ebenezar {
                 this.columnMaturity_Date = base.Columns["Maturity Date"];
                 this.columnBorrower_TRN = base.Columns["Borrower TRN"];
                 this.columnStatus = base.Columns["Status"];
+                this.columnInterest_Rate = base.Columns["Interest Rate"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -924,6 +936,8 @@ namespace Ebenezar {
                 base.Columns.Add(this.columnBorrower_TRN);
                 this.columnStatus = new global::System.Data.DataColumn("Status", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStatus);
+                this.columnInterest_Rate = new global::System.Data.DataColumn("Interest Rate", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInterest_Rate);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnLoan_ID}, true));
                 this.columnLoan_ID.AllowDBNull = false;
@@ -1622,6 +1636,22 @@ namespace Ebenezar {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int Interest_Rate {
+                get {
+                    try {
+                        return ((int)(this[this.tableLoan.Interest_RateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Interest Rate\' in table \'Loan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableLoan.Interest_RateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public BorrowerRow BorrowerRow {
                 get {
                     return ((BorrowerRow)(this.GetParentRow(this.Table.ParentRelations["FK_Loan_Borrower"])));
@@ -1629,6 +1659,18 @@ namespace Ebenezar {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Loan_Borrower"]);
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsInterest_RateNull() {
+                return this.IsNull(this.tableLoan.Interest_RateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetInterest_RateNull() {
+                this[this.tableLoan.Interest_RateColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2299,6 +2341,7 @@ namespace Ebenezar.EICDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Maturity Date", "Maturity Date");
             tableMapping.ColumnMappings.Add("Borrower TRN", "Borrower TRN");
             tableMapping.ColumnMappings.Add("Status", "Status");
+            tableMapping.ColumnMappings.Add("Interest Rate", "Interest Rate");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -2308,9 +2351,9 @@ namespace Ebenezar.EICDataSetTableAdapters {
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = @"INSERT INTO Loan
-                         ([Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayment Frequency], [Credit Officer], Borrowed, [Maturity Date], [Borrower TRN], Status)
-VALUES        (@Loan_ID,@Loan_Type,@Repayment_Method,@Disbursement_Date,@Repayment_Frequency,@Credit_Officer,@Borrowed,@Maturity_Date,@Borrower_TRN,@Status); 
-SELECT [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayment Frequency], [Credit Officer], Borrowed, [Maturity Date], [Borrower TRN], Status FROM Loan WHERE ([Loan ID] = @Loan_ID)";
+                         ([Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayment Frequency], [Credit Officer], Borrowed, [Maturity Date], [Borrower TRN], Status, [Interest Rate])
+VALUES        (@Loan_ID,@Loan_Type,@Repayment_Method,@Disbursement_Date,@Repayment_Frequency,@Credit_Officer,@Borrowed,@Maturity_Date,@Borrower_TRN,@Status,@Interest_Rate); 
+SELECT [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayment Frequency], [Credit Officer], Borrowed, [Maturity Date], [Borrower TRN], Status, [Interest Rate] FROM Loan WHERE ([Loan ID] = @Loan_ID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Loan_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Loan ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Loan_Type", global::System.Data.SqlDbType.VarChar, 150, global::System.Data.ParameterDirection.Input, 0, 0, "Loan Type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2322,13 +2365,14 @@ SELECT [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayme
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Maturity_Date", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Maturity Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Borrower_TRN", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Borrower TRN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Status", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Status", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Interest_Rate", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Interest Rate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = @"UPDATE       Loan
 SET                [Loan ID] = @Loan_ID, [Loan Type] = @Loan_Type, [Repayment Method] = @Repayment_Method, [Disbursement Date] = @Disbursement_Date, [Repayment Frequency] = @Repayment_Frequency, 
-                         [Credit Officer] = @Credit_Officer, Borrowed = @Borrowed, [Maturity Date] = @Maturity_Date, [Borrower TRN] = @Borrower_TRN, Status = @Status
+                         [Credit Officer] = @Credit_Officer, Borrowed = @Borrowed, [Maturity Date] = @Maturity_Date, [Borrower TRN] = @Borrower_TRN, Status = @Status, [Interest Rate] = @Interest_Rate
 WHERE        ([Loan ID] = @Original_Loan_ID); 
-SELECT [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayment Frequency], [Credit Officer], Borrowed, [Maturity Date], [Borrower TRN], Status FROM Loan WHERE ([Loan ID] = @Loan_ID)";
+SELECT [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayment Frequency], [Credit Officer], Borrowed, [Maturity Date], [Borrower TRN], Status, [Interest Rate] FROM Loan WHERE ([Loan ID] = @Loan_ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Loan_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Loan ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Loan_Type", global::System.Data.SqlDbType.VarChar, 150, global::System.Data.ParameterDirection.Input, 0, 0, "Loan Type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2340,6 +2384,7 @@ SELECT [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayme
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Maturity_Date", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Maturity Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Borrower_TRN", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Borrower TRN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Status", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Status", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Interest_Rate", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Interest Rate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Loan_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Loan ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
@@ -2358,20 +2403,21 @@ SELECT [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayme
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repaymen" +
                 "t Frequency], [Credit Officer], Borrowed, [Maturity Date], [Borrower TRN], Statu" +
-                "s FROM dbo.Loan";
+                "s, [Interest Rate] FROM Loan";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT        [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [R" +
-                "epayment Frequency], [Credit Officer], Borrowed, [Maturity Date], [Borrower TRN]" +
-                ", Status\r\nFROM            Loan\r\nWHERE        ([Loan ID] = @LoanID)";
+            this._commandCollection[1].CommandText = "SELECT [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repaymen" +
+                "t Frequency], [Credit Officer], Borrowed, [Maturity Date], [Borrower TRN], Statu" +
+                "s, [Interest Rate] FROM Loan WHERE ([Loan ID] = @LoanID)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LoanID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Loan ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT        [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [R" +
-                "epayment Frequency], [Credit Officer], Borrowed, [Maturity Date], [Borrower TRN]" +
-                ", Status\r\nFROM            Loan\r\nWHERE        ([Borrower TRN] = @TRN)";
+            this._commandCollection[2].CommandText = @"SELECT        [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayment Frequency], [Credit Officer], Borrowed, [Maturity Date], [Borrower TRN], Status, [Interest Rate]
+FROM            Loan
+WHERE        ([Borrower TRN] = @TRN)
+ORDER BY [Disbursement Date] DESC";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TRN", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Borrower TRN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -2483,7 +2529,7 @@ SELECT [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayme
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Loan_ID, string Loan_Type, string Repayment_Method, string Disbursement_Date, string Repayment_Frequency, string Credit_Officer, int Borrowed, string Maturity_Date, int Borrower_TRN, string Status) {
+        public virtual int Insert(int Loan_ID, string Loan_Type, string Repayment_Method, string Disbursement_Date, string Repayment_Frequency, string Credit_Officer, int Borrowed, string Maturity_Date, int Borrower_TRN, string Status, global::System.Nullable<int> Interest_Rate) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Loan_ID));
             if ((Loan_Type == null)) {
                 throw new global::System.ArgumentNullException("Loan_Type");
@@ -2529,6 +2575,12 @@ SELECT [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayme
             else {
                 this.Adapter.InsertCommand.Parameters[9].Value = ((string)(Status));
             }
+            if ((Interest_Rate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((int)(Interest_Rate.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2549,7 +2601,7 @@ SELECT [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayme
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Loan_ID, string Loan_Type, string Repayment_Method, string Disbursement_Date, string Repayment_Frequency, string Credit_Officer, int Borrowed, string Maturity_Date, int Borrower_TRN, string Status, int Original_Loan_ID) {
+        public virtual int Update(int Loan_ID, string Loan_Type, string Repayment_Method, string Disbursement_Date, string Repayment_Frequency, string Credit_Officer, int Borrowed, string Maturity_Date, int Borrower_TRN, string Status, global::System.Nullable<int> Interest_Rate, int Original_Loan_ID) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Loan_ID));
             if ((Loan_Type == null)) {
                 throw new global::System.ArgumentNullException("Loan_Type");
@@ -2595,7 +2647,13 @@ SELECT [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayme
             else {
                 this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Status));
             }
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_Loan_ID));
+            if ((Interest_Rate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Interest_Rate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_Loan_ID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2616,8 +2674,8 @@ SELECT [Loan ID], [Loan Type], [Repayment Method], [Disbursement Date], [Repayme
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Loan_Type, string Repayment_Method, string Disbursement_Date, string Repayment_Frequency, string Credit_Officer, int Borrowed, string Maturity_Date, int Borrower_TRN, string Status, int Original_Loan_ID) {
-            return this.Update(Original_Loan_ID, Loan_Type, Repayment_Method, Disbursement_Date, Repayment_Frequency, Credit_Officer, Borrowed, Maturity_Date, Borrower_TRN, Status, Original_Loan_ID);
+        public virtual int Update(string Loan_Type, string Repayment_Method, string Disbursement_Date, string Repayment_Frequency, string Credit_Officer, int Borrowed, string Maturity_Date, int Borrower_TRN, string Status, global::System.Nullable<int> Interest_Rate, int Original_Loan_ID) {
+            return this.Update(Original_Loan_ID, Loan_Type, Repayment_Method, Disbursement_Date, Repayment_Frequency, Credit_Officer, Borrowed, Maturity_Date, Borrower_TRN, Status, Interest_Rate, Original_Loan_ID);
         }
     }
     
