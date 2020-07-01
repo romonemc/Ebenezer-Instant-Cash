@@ -72,20 +72,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.lineShape13 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape10 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape12 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape11 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape9 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape8 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape7 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape6 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape5 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape4 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape2 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.borrowerTableAdapter = new Ebenezar.EICDataSetTableAdapters.BorrowerTableAdapter();
             this.loanTableAdapter = new Ebenezar.EICDataSetTableAdapters.LoanTableAdapter();
             this.panel1.SuspendLayout();
@@ -129,7 +115,6 @@
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.shapeContainer1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
@@ -244,12 +229,11 @@
             // 
             // lblAddress
             // 
-            this.lblAddress.AutoSize = true;
             this.lblAddress.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.borrowerBindingSource, "Address", true));
             this.lblAddress.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblAddress.Location = new System.Drawing.Point(193, 368);
             this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(76, 25);
+            this.lblAddress.Size = new System.Drawing.Size(231, 108);
             this.lblAddress.TabIndex = 8;
             this.lblAddress.Text = "label19";
             // 
@@ -540,133 +524,6 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Customer\'s TRN:";
             // 
-            // shapeContainer1
-            // 
-            this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
-            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer1.Name = "shapeContainer1";
-            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.lineShape13,
-            this.lineShape10,
-            this.lineShape12,
-            this.lineShape11,
-            this.lineShape9,
-            this.lineShape8,
-            this.lineShape7,
-            this.lineShape6,
-            this.lineShape5,
-            this.lineShape4,
-            this.lineShape3,
-            this.lineShape2,
-            this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(824, 631);
-            this.shapeContainer1.TabIndex = 7;
-            this.shapeContainer1.TabStop = false;
-            // 
-            // lineShape13
-            // 
-            this.lineShape13.Name = "lineShape13";
-            this.lineShape13.X1 = 537;
-            this.lineShape13.X2 = 795;
-            this.lineShape13.Y1 = 430;
-            this.lineShape13.Y2 = 430;
-            // 
-            // lineShape10
-            // 
-            this.lineShape10.Name = "lineShape10";
-            this.lineShape10.X1 = 167;
-            this.lineShape10.X2 = 416;
-            this.lineShape10.Y1 = 274;
-            this.lineShape10.Y2 = 274;
-            // 
-            // lineShape12
-            // 
-            this.lineShape12.Name = "lineShape12";
-            this.lineShape12.X1 = 538;
-            this.lineShape12.X2 = 796;
-            this.lineShape12.Y1 = 465;
-            this.lineShape12.Y2 = 465;
-            // 
-            // lineShape11
-            // 
-            this.lineShape11.Name = "lineShape11";
-            this.lineShape11.X1 = 538;
-            this.lineShape11.X2 = 796;
-            this.lineShape11.Y1 = 531;
-            this.lineShape11.Y2 = 531;
-            // 
-            // lineShape9
-            // 
-            this.lineShape9.Name = "lineShape9";
-            this.lineShape9.X1 = 537;
-            this.lineShape9.X2 = 795;
-            this.lineShape9.Y1 = 393;
-            this.lineShape9.Y2 = 393;
-            // 
-            // lineShape8
-            // 
-            this.lineShape8.Name = "lineShape8";
-            this.lineShape8.X1 = 534;
-            this.lineShape8.X2 = 792;
-            this.lineShape8.Y1 = 232;
-            this.lineShape8.Y2 = 232;
-            // 
-            // lineShape7
-            // 
-            this.lineShape7.Name = "lineShape7";
-            this.lineShape7.X1 = 534;
-            this.lineShape7.X2 = 792;
-            this.lineShape7.Y1 = 274;
-            this.lineShape7.Y2 = 274;
-            // 
-            // lineShape6
-            // 
-            this.lineShape6.Name = "lineShape6";
-            this.lineShape6.X1 = 535;
-            this.lineShape6.X2 = 793;
-            this.lineShape6.Y1 = 355;
-            this.lineShape6.Y2 = 355;
-            // 
-            // lineShape5
-            // 
-            this.lineShape5.Name = "lineShape5";
-            this.lineShape5.X1 = 535;
-            this.lineShape5.X2 = 793;
-            this.lineShape5.Y1 = 316;
-            this.lineShape5.Y2 = 316;
-            // 
-            // lineShape4
-            // 
-            this.lineShape4.Name = "lineShape4";
-            this.lineShape4.X1 = 166;
-            this.lineShape4.X2 = 415;
-            this.lineShape4.Y1 = 355;
-            this.lineShape4.Y2 = 355;
-            // 
-            // lineShape3
-            // 
-            this.lineShape3.Name = "lineShape3";
-            this.lineShape3.X1 = 166;
-            this.lineShape3.X2 = 415;
-            this.lineShape3.Y1 = 393;
-            this.lineShape3.Y2 = 393;
-            // 
-            // lineShape2
-            // 
-            this.lineShape2.Name = "lineShape2";
-            this.lineShape2.X1 = 165;
-            this.lineShape2.X2 = 414;
-            this.lineShape2.Y1 = 315;
-            this.lineShape2.Y2 = 315;
-            // 
-            // lineShape1
-            // 
-            this.lineShape1.Name = "lineShape1";
-            this.lineShape1.X1 = 165;
-            this.lineShape1.X2 = 414;
-            this.lineShape1.Y1 = 232;
-            this.lineShape1.Y2 = 232;
-            // 
             // borrowerTableAdapter
             // 
             this.borrowerTableAdapter.ClearBeforeFill = true;
@@ -729,18 +586,18 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label16;
-        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape4;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape3;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape2;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape1;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape12;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape11;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape9;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape8;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape7;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape6;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape5;
+        //private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
+        //private Microsoft.VisualBasic.PowerPacks.LineShape lineShape4;
+        //private Microsoft.VisualBasic.PowerPacks.LineShape lineShape3;
+        //private Microsoft.VisualBasic.PowerPacks.LineShape lineShape2;
+        //private Microsoft.VisualBasic.PowerPacks.LineShape lineShape1;
+        //private Microsoft.VisualBasic.PowerPacks.LineShape lineShape12;
+        //private Microsoft.VisualBasic.PowerPacks.LineShape lineShape11;
+        //private Microsoft.VisualBasic.PowerPacks.LineShape lineShape9;
+        //private Microsoft.VisualBasic.PowerPacks.LineShape lineShape8;
+        //private Microsoft.VisualBasic.PowerPacks.LineShape lineShape7;
+        //private Microsoft.VisualBasic.PowerPacks.LineShape lineShape6;
+        //private Microsoft.VisualBasic.PowerPacks.LineShape lineShape5;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lblTRN;
@@ -748,7 +605,7 @@
         private System.Windows.Forms.Label lblDOB;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label lblTelephone;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape10;
+        //private Microsoft.VisualBasic.PowerPacks.LineShape lineShape10;
         private System.Windows.Forms.Label lblAddress;
         private System.Windows.Forms.Label lblTotalRepayment;
         private System.Windows.Forms.Label lblMaturityDate;
@@ -763,7 +620,7 @@
         private EICDataSetTableAdapters.LoanTableAdapter loanTableAdapter;
         private System.Windows.Forms.Label lblInterestRate;
         private System.Windows.Forms.Label label19;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape13;
+        //private Microsoft.VisualBasic.PowerPacks.LineShape lineShape13;
         private System.Windows.Forms.Label label22;
     }
 }

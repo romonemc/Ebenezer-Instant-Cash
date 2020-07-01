@@ -8,6 +8,7 @@ namespace Ebenezar
     public partial class Main : Form
     {
         private int TRN;
+        private bool Authenticated;
 
         public Main()
         {
@@ -32,6 +33,7 @@ namespace Ebenezar
             {
                 TRN = Convert.ToInt32(dgvBorrowers[0, e.RowIndex].Value);
                 loanTableAdapter.FillWithLoanInfo(eICDataSet.Loan, TRN);
+                dgvLoans.Enabled = true;
             }
             catch (Exception)
             {
@@ -65,8 +67,10 @@ namespace Ebenezar
         {
             if (dgvBorrowers["BorrowerDOB", dgvBorrowers.SelectedRows[0].Index].Value != DBNull.Value)
             {
+                Random rnd = new Random();
+
                 String dob = Convert.ToDateTime(dgvBorrowers["BorrowerDOB", dgvBorrowers.SelectedRows[0].Index].Value).ToShortDateString();
-                e.Row.Cells["LoanID"].Value = TRN.ToString().Substring(0, 3) + dob.Substring(dob.Length - 2);
+                e.Row.Cells["LoanID"].Value = TRN.ToString().Substring(0, 3) + dob.Substring(dob.Length - 2) + rnd.Next(1, 99999).ToString();
             }
             else
             {
@@ -76,6 +80,7 @@ namespace Ebenezar
 
             e.Row.Cells["borrowerTRN"].Value = TRN;
             e.Row.Cells["disburseDate"].Value = DateTime.Today;
+            e.Row.Cells["maturityDate"].Value = DateTime.Today.AddDays(30);
         }
 
         private DataRow LastLoanRow;
